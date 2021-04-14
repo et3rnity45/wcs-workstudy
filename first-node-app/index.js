@@ -7,7 +7,7 @@ const app = express();
 const dbUrl = "mongodb://127.0.0.1:27017/wilderdb";
 const port = 3000;
 
-//Db connection
+//Database connection
 mongoose
   .connect(dbUrl, {
     useNewUrlParser: true,
@@ -21,26 +21,22 @@ mongoose
 //Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-mongoose.set('debug', true);
 
 
 //Routes
-app.post("/api/wilder", asyncHandler(wilderController.create));
-
-app.get("/api/wilder", asyncHandler(wilderController.findAll));
-app.get("/api/wilder/:id", asyncHandler(wilderController.findOne));
-
-app.put("/api/wilder/:id", asyncHandler(wilderController.update));
-
-app.delete("/api/wilder/:id", asyncHandler(wilderController.delete));
-app.delete("/api/wilder", asyncHandler(wilderController.deleteAll))
+app.post("/api/wilders", asyncHandler(wilderController.create));
+app.get("/api/wilders", asyncHandler(wilderController.findAll));
+app.get("/api/wilders/:id", asyncHandler(wilderController.findOne));
+app.put("/api/wilders/:id", asyncHandler(wilderController.update));
+app.delete("/api/wilders/:id", asyncHandler(wilderController.delete));
+app.delete("/api/wilders", asyncHandler(wilderController.deleteAll))
 
 app.get('*', (req, res) => {
   res.send('Erreur 404, cette page n\'existe pas.', 404);
 });
 
 
-//Handling http errors
+//Handling HTTP errors
 app.use((error, req, res, next) => {
   res.status(error.status || 500)
   res.json({

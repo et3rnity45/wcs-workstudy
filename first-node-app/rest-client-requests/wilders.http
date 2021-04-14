@@ -1,14 +1,14 @@
 @id = 6076d983b83a7e433436d867
 
-GET http://localhost:3000/api/wilder HTTP/1.1
+GET http://localhost:3000/api/wilders HTTP/1.1
 
 ###
 
-GET http://localhost:3000/api/wilder/{{id}} HTTP/1.1
+GET http://localhost:3000/api/wilders/{{id}} HTTP/1.1
 
 ###
 
-POST http://localhost:3000/api/wilder/ HTTP/1.1
+POST http://localhost:3000/api/wilders/ HTTP/1.1
 Content-Type: application/json
 
 {
@@ -22,7 +22,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3000/api/wilder/{{id}} HTTP/1.1
+PUT http://localhost:3000/api/wilders/{{id}} HTTP/1.1
 Content-Type: application/json
 
 {
@@ -31,8 +31,8 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/wilder/{{id}} HTTP/1.1
+DELETE http://localhost:3000/api/wilders/{{id}} HTTP/1.1
 
 ###
 
-DELETE http://localhost:3000/api/wilder HTTP/1.1
+DELETE http://localhost:3000/api/wilders HTTP/1.1
