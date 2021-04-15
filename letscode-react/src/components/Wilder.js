@@ -17,7 +17,7 @@ function Wilder({ name, skills }) {
       <h4>Wild Skills</h4>
       <List>
         {skills.map(skill => (
-          <Skill key={skill.title} {...skill} />
+          <Skill key={skill._id} {...skill} />
         ))}
       </List>
     </Card>

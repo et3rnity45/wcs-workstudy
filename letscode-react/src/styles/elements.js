@@ -1,12 +1,13 @@
 import styled from "styled-components";
+import { colors } from "./globals";
 
 export const Header = styled.header`
-  background-color: #f76c6c;
+  background-color: ${colors.primary};
   color: #fff;
 `
 
 export const Footer = styled.footer`
-  border-top: 2px solid #f76c6c;
+  border-top: 2px solid ${colors.primary};
 `
 
 export const Container = styled.div`
@@ -40,7 +41,7 @@ export const Card = styled.article`
     height: auto;
   }
   h3, h4 {
-    color: #f76c6c;
+    color: ${colors.primary};
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: start;
@@ -67,7 +68,7 @@ export const List = styled.ul`
     margin: 4px 0;
     display: flex;
     justify-content: space-around;
-    border: #f76c6c 1px solid;
+    border: ${colors.primary} 1px solid;
     border-radius: 4px;
     padding: 2px;
   }
@@ -80,23 +81,12 @@ export const Badge = styled.span`
   justify-content: center;
 
   /* Colors */
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: ${({ votes }) =>
+    votes > 9 ? "rgba(0, 100, 0, 0.3)" : "rgba(0, 0, 0, 0.3)"};
   color: #fff;
 
   /* Rounded border */
   border-radius: 9999px;
   height: 20px;
   width: 20px;
-`
-
-/* UNUSED */
-export const Button = styled.button`
-  /* Reset text link default */
-  text-decoration: none;
-
-  background-color: #f76c6c;
-  color: #fff;
-  padding: 0.5em 1em;
-  border-radius: 4px;
-  display: inline-block;
 `

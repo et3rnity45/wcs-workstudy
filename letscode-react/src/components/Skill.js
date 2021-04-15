@@ -5,7 +5,7 @@ function Skill({ title, votes }) {
   return (
     <li>
       {title}
-      <Badge>{votes}</Badge>
+      <Badge votes={votes}>{votes}</Badge>
     </li>
   )
 }

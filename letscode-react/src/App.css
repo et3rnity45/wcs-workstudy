@@ -1,6 +1,20 @@
 /* 
  * global. css 
  */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --input-border: #f76c6c;
+  --input-focus-h: 210;
+  --input-focus-s: 100%;
+  --input-focus-l: 42%;
+}
+
 body {
   font-family: sans-serif;
   color: #222;
@@ -31,5 +45,4 @@ h4 {
 
 p {
   margin: 0 0 1.15em;
-  
 }
