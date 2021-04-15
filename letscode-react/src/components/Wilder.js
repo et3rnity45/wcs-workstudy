@@ -1,11 +1,11 @@
 import blank_profile from '../assets/img/blank_profile.jpg';
 import Proptypes from "prop-types";
-import SkillList from './SkillList';
-import './Wilder.css';
+import Skill from './Skill';
+import { Card, List } from '../styles/elements';
 
 function Wilder({ name, skills }) {
   return (
-    <article className="card">
+    <Card>
       <img src={blank_profile} alt={name + " Profile"} />
       <h3>{name}</h3>
       <p>
@@ -15,8 +15,12 @@ function Wilder({ name, skills }) {
         nisi ut aliquip ex ea commodo consequat.
       </p>
       <h4>Wild Skills</h4>
-      <SkillList skills={skills} />
-    </article>
+      <List>
+        {skills.map(skill => (
+          <Skill key={skill.title} {...skill} />
+        ))}
+      </List>
+    </Card>
   )
 }
 

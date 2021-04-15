@@ -1,16 +1,17 @@
 import Proptypes from "prop-types";
+import { Badge } from "../styles/elements";
 
-function Skill({ name, votes }) {
+function Skill({ title, votes }) {
   return (
     <li>
-      {name}
-      <span className="votes">{votes}</span>
+      {title}
+      <Badge>{votes}</Badge>
     </li>
   )
 }
 
 Skill.propTypes = {
-  name: Proptypes.string.isRequired,
+  title: Proptypes.string.isRequired,
   votes: Proptypes.number.isRequired
 };
 
