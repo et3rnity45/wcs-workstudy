@@ -1,4 +1,4 @@
-@id = 607828dc85c5374a2cec56a8
+@id = 60793f6478aa7a27b84e24e1
 
 GET http://localhost:5000/api/wilders HTTP/1.1
 
@@ -26,7 +26,7 @@ PUT http://localhost:5000/api/wilders/{{id}} HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "Michel"
+  "name": "Levend"
 }
 
 ###
