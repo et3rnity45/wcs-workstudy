@@ -1,5 +1,5 @@
 export const colors = {
-  primary: "#f76c6c",
+  primary: "#ea0c3c",
   focus: {
     h: 210,
     s: "100%",

@@ -1,25 +1,21 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useReducer } from "react";
 import Wilder from './components/Wilder';
 import AddWilder from "./components/AddWilder";
-import { Header, Footer, Container, CardRow } from "./styles/elements";
+import useWilderFetch from './hooks/useWilderFetch';
+import appReducer from './reducers/appReducer';
+import { Header, Footer, Container, CardRow, ShowButton } from "./styles/elements";
+import { Success } from './styles/form-elements';
 import './App.css';
 
+const initialState = {
+  showAddForm: false,
+  successMessage: "",
+  wilders: []
+};
+
 function App() {
-  const [wilders, setWilders] = useState([]);
-
-  useEffect(() => {
-    const fetchWilders = async () => {
-      try {
-        const result = await axios("http://localhost:5000/api/wilders");
-        setWilders(result.data.result);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchWilders();
-  }, []);
+  const [state, dispatch] = useReducer(appReducer, initialState);
+  useWilderFetch(dispatch);
 
   return (
     <div>
@@ -29,12 +25,27 @@ function App() {
         </Container>
       </Header>
       <Container>
-        <AddWilder />
+        <ShowButton
+          onClick={() => dispatch({ type: "TOGGLE_SHOW_ADD_FORM" })}
+        >
+          {state.showAddForm ? "Close" : "Open"}
+        </ShowButton>
+        {state.showAddForm ? (
+          <AddWilder
+            onSuccess={(newWilder) =>
+              dispatch({ type: "WILDER_ADDED", newWilder })
+            }
+          />
+        ) : (
+          state.successMessage !== "" && (
+            <Success>{state.successMessage}</Success>
+          )
+        )}
       </Container>
       <Container>
         <h2>Wilders</h2>
         <CardRow>
-          {wilders.map(wilder => (
+          {state.wilders.map(wilder => (
             <Wilder key={wilder._id} {...wilder} />
           ))}
         </CardRow>

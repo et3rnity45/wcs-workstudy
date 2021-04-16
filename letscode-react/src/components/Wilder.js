@@ -3,9 +3,9 @@ import Proptypes from "prop-types";
 import Skill from './Skill';
 import { Card, List } from '../styles/elements';
 
-function Wilder({ name, city, skills }) {
+function Wilder({ name, city, skills, justAdded }) {
   return (
-    <Card>
+    <Card newCard={justAdded}>
       <img src={blank_profile} alt={name + " Profile"} />
       <h3>{name}</h3>
       <p>{city}</p>
