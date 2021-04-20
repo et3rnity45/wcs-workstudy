@@ -1,6 +1,8 @@
-const router = require('express').Router();
-const wilderController = require("../controllers/wilders");
-const asyncHandler = require('express-async-handler')
+import { Router } from 'express';
+import asyncHandler from 'express-async-handler';
+import wilderController from '../controllers/wilders';
+
+const router = Router();
 
 router
   .route('/')
@@ -13,4 +15,4 @@ router
   .put(asyncHandler(wilderController.update))
   .delete(asyncHandler(wilderController.delete));
 
-module.exports = router;
+export default router;
