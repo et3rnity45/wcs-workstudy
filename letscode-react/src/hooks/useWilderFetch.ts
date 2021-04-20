@@ -1,7 +1,8 @@
-import axios from 'axios';
-import { useEffect } from 'react';
+import axios from "axios";
+import { Dispatch, useEffect } from "react";
+import { Action } from "../reducers/appReducer";
 
-const useWilderFetch = (dispatch) => {
+const useWilderFetch = (dispatch: Dispatch<Action>): void => {
   useEffect(() => {
     const fetchWilders = async () => {
       try {
@@ -17,6 +18,6 @@ const useWilderFetch = (dispatch) => {
 
     fetchWilders();
   }, [dispatch]);
-}
+};
 
 export default useWilderFetch;

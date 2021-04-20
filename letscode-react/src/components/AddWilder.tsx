@@ -1,17 +1,17 @@
+import React from "react";
 import { Button, Form, Input, Label, Error } from "../styles/form-elements";
 import { ReactComponent as LoadingIcon } from "../assets/icons/hourglass.svg";
 import useWilderCreate from "../hooks/useWilderCreate";
 
-
-function AddWilder({ onSuccess }) {
+function AddWilder(): JSX.Element {
   const {
     inputName,
     inputCity,
     formSubmission,
     loading,
     delayed,
-    error
-  } = useWilderCreate(onSuccess)
+    error,
+  } = useWilderCreate();
 
   return (
     <Form onSubmit={formSubmission}>
@@ -21,7 +21,8 @@ function AddWilder({ onSuccess }) {
         type="text"
         placeholder="Type the name"
         required
-        {...inputName}
+        value={inputName.value}
+        onChange={inputName.onChange}
       />
       <Label htmlFor="city-input">City :</Label>
       <Input
@@ -29,13 +30,11 @@ function AddWilder({ onSuccess }) {
         type="text"
         placeholder="Type the city"
         required
-        {...inputCity}
+        value={inputCity.value}
+        onChange={inputCity.onChange}
       />
       {error !== "" && <Error>{error}</Error>}
-      <Button
-        disabled={loading}
-        showLoading={loading && !delayed}
-      >
+      <Button disabled={loading} showLoading={loading && !delayed}>
         {loading && !delayed ? <LoadingIcon /> : "Add"}
       </Button>
     </Form>

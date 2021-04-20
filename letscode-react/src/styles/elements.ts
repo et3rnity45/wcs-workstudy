@@ -1,21 +1,29 @@
 import styled from "styled-components";
 import { colors } from "./globals";
 
+type CardProps = {
+  newCard: boolean;
+};
+
+type BadgeProps = {
+  votes: number;
+};
+
 export const Header = styled.header`
   background-color: ${colors.primary};
   color: #fff;
-`
+`;
 
 export const Footer = styled.footer`
   border-top: 2px solid ${colors.primary};
-`
+`;
 
 export const Container = styled.div`
   max-width: 1024px;
   margin-left: auto;
   margin-right: auto;
   padding: 24px;
-`
+`;
 
 export const CardRow = styled.div`
   display: grid;
@@ -27,7 +35,7 @@ export const CardRow = styled.div`
   @media (max-width: 640px) {
     grid-template-columns: repeat(1, 100%);
   }
-`
+`;
 
 const newStyle = `{
   border-color: hsl(${colors.focus.h}, ${colors.focus.s}, ${colors.focus.l});
@@ -41,7 +49,7 @@ const newStyle = `{
   outline: 3px solid transparent;
 }`;
 
-export const Card = styled.article`
+export const Card = styled.article<CardProps>`
   padding: 20px;
   border: 1px solid #c9c9c9;
   border-radius: 7px;
@@ -52,7 +60,8 @@ export const Card = styled.article`
     max-width: 100%;
     height: auto;
   }
-  h3, h4 {
+  h3,
+  h4 {
     color: ${colors.primary};
     display: grid;
     grid-template-columns: 1fr auto;
@@ -63,12 +72,13 @@ export const Card = styled.article`
       border-radius: 4px;
     }
   }
-  p, ul {
+  p,
+  ul {
     color: #757575;
     line-height: 1.5;
   }
   ${({ newCard }) => newCard && newStyle}
-`
+`;
 
 export const List = styled.ul`
   margin: 0;
@@ -87,7 +97,7 @@ export const List = styled.ul`
   }
 `;
 
-export const Badge = styled.span`
+export const Badge = styled.span<BadgeProps>`
   /* Center the content */
   align-items: center;
   display: flex;
@@ -102,7 +112,7 @@ export const Badge = styled.span`
   border-radius: 9999px;
   height: 20px;
   width: 20px;
-`
+`;
 
 export const ShowButton = styled.button`
   background-color: ${colors.primary};
@@ -111,4 +121,3 @@ export const ShowButton = styled.button`
     width: 20px;
   }
 `;
-
