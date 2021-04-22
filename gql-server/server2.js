@@ -11,14 +11,7 @@ const schema = buildSchema(`
     },
     type Mutation {
         updateCourseTopic(id: Int!, topic: String!): Course
-        createCourse(
-          id: Int!,
-          title: String!,
-          author: String!,
-          description: String!,
-          topic: String!,
-          url: String!
-        ): [Course]
+        createCourse(course : CourseInput!): [Course]
     },
     type Course {
         id: Int
@@ -27,6 +20,13 @@ const schema = buildSchema(`
         description: String
         topic: String
         url: String
+    },
+    input CourseInput {
+      title: String,
+      author: String,
+      description: String,
+      topic: String,
+      url: String
     }
 `);
 
@@ -85,19 +85,13 @@ const updateCourseTopic = function ({ id, topic }) {
 
 const searchCourses = function (args) {
   const search = args.search;
-  return coursesData.filter(course => course.title.includes(search));
+  return coursesData.filter(course =>
+    course.title.toLowerCase().includes(search.toLowerCase())
+  );
 }
 
-const createCourse = function ({ id, title, author, description, topic, url }) {
-  const newCourse = {
-    id: id,
-    title: title,
-    author: author,
-    description: description,
-    topic: topic,
-    url: url
-  }
-  coursesData.push(newCourse);
+const createCourse = function ({ course }) {
+  coursesData.push(course);
   return coursesData;
 }
 
